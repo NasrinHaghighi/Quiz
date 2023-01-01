@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 interface Props{
-    score?:number,
+    score:number,
    
 }
 
@@ -18,7 +18,7 @@ export const ScoreSlice= createSlice({
     reducers:{
         scoreState:(state, action:PayloadAction<number>)=>{
           state.score=action.payload
-          console.log(state.score)
+          //console.log(state.score)
         },
  
     }
