@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
-import { Conatiner } from './styles'
+//import { Conatiner } from './styles'
 import { Box, Typography ,Button} from '@mui/material';
 import Progress from '../Progress/Progress';
 
@@ -35,19 +35,21 @@ function QuestionCard({showResult, seeResult}:any) {
    }
    //console.log(userAnswer)
    const goToNext=(e:any)=>{
+    if(questions.questions[index].correct_answer === userAnswer){
+     dispatch(scoreState())
+        }
    setUserAnswer('')
+   
         if(index < questions.questions.length){
             setIndex(index+1)
       }
-      if(questions.questions[index].correct_answer === userAnswer){
-        setScore(score+1)
-      }
-      dispatch(scoreState(score))
+      
+      
       let ques=questions.questions[index]
      dispatch(getUserAnswers({...ques, userAnswer}))
    }
 
-
+   //console.log(`index +${index} score + ${score}`)
   //to set nextbtn to disable in each question// 
    useEffect(() => {
   setUserClicked(false)

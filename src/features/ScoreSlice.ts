@@ -16,9 +16,8 @@ export const ScoreSlice= createSlice({
     name:'Score',
     initialState,
     reducers:{
-        scoreState:(state, action:PayloadAction<number>)=>{
-          state.score=action.payload
-          //console.log(state.score)
+        scoreState:(state)=>{
+          state.score +=1
         },
  
     }

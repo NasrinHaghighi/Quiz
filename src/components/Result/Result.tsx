@@ -1,15 +1,16 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { Box, Typography ,Button} from '@mui/material';
 import { purple, red,green } from '@mui/material/colors';
 
 import ResultItem from './ResultItem/ResultItem';
+
+
 const accent = green[900]
 
 function Result() {
     
     const result = useAppSelector(state=> state.userAnswers)
-    
 
 
 
@@ -34,6 +35,7 @@ function Result() {
      {result.result.map((r, i)=>{
         return <ResultItem key={i} r={r}/>
      })}
+     {/* <Box><Button onClick={()=>handelClick()}>Start Again</Button></Box> */}
   </Box>
   )
 }

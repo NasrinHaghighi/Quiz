@@ -17,7 +17,7 @@ import { fetchData } from '../../API';
 import { getQuestions } from '../../features/QuestionsSlice';
 import { QuestionState } from "../../API";
 import { Box } from '@mui/material';
-
+import Switch from "react-switch";
 
 interface Props{
   number:number,
@@ -27,8 +27,11 @@ difficulty:string
 interface Start_type{
   start:Props
 }
-
-function Start() {
+interface Check{
+  checked:boolean,
+  handelToggle:any
+}
+function Start({checked, handelToggle}:Check) {
 
   const [loading, setLoading] =useState(false)
   const [questions, setQuestions] =useState<QuestionState[]>([])
@@ -75,6 +78,7 @@ const showResult=()=>{
 
   return (
    <>
+  
    {gameOver && !loading ?
       <Box  sx={{
         textAlign:'center',
@@ -90,7 +94,10 @@ const showResult=()=>{
         fontSize: '0.875rem',
         fontWeight: '700',
       }}>
-  
+   <Box sx={{textAlign:'left',  m: 1,   p: 2,}}>
+    
+   <Switch onChange={handelToggle} checked={checked} />
+   </Box>
         <Typography variant="h1" sx={{m:2, p:3}}>Start Your Quiz</Typography>
         <FormControl fullWidth  sx={{ paddingBottom:2 }}>
 <Typography variant="h6" align='left'> Number of Questions</Typography>

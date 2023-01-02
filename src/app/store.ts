@@ -3,13 +3,15 @@ import StartSlice from '../features/StartSlice'
 import QuestionsSlice from '../features/QuestionsSlice'
 import ScoreSlice from '../features/ScoreSlice'
 import UseAnswers from '../features/UserAnswersSlice'
+import StartAgainSlice from '../features/StartAgainSlice'
 
 export const store=configureStore({
     reducer:{
      start:StartSlice,
      questions:QuestionsSlice,
  score:ScoreSlice,
-     userAnswers:UseAnswers
+     userAnswers:UseAnswers,
+     startAgain:StartAgainSlice
      
 
     }

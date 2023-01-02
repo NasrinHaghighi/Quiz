@@ -8,10 +8,11 @@ import { Box, Typography ,Button} from '@mui/material';
 function Progress() {
   const userScore=useAppSelector(state=>state.score.score)
   const totalNumber=useAppSelector(state=>state.start.number)
-  //console.log(userScore)
+  console.log(totalNumber)
+  console.log(userScore)
   let score = userScore / totalNumber*100
-  //console.log(score)
-    const [progress, setProgress] = React.useState(userScore);
+  console.log(score)
+    
 
     React.useEffect(() => {
         const timer = setInterval(() => {
