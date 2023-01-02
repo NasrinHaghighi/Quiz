@@ -16,6 +16,7 @@ import {  useAppDispatch } from '../../app/hooks'
 import { fetchData } from '../../API';
 import { getQuestions } from '../../features/QuestionsSlice';
 import { QuestionState } from "../../API";
+import { Box } from '@mui/material';
 
 
 interface Props{
@@ -75,15 +76,28 @@ const showResult=()=>{
   return (
    <>
    {gameOver && !loading ?
-      <Conatiner>
+      <Box  sx={{
+        textAlign:'center',
+        m: 1,
+        p: 4,
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+        color: (theme) =>
+          theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+        border: '1px solid',
+        borderColor: (theme) =>
+          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+        borderRadius: 2,
+        fontSize: '0.875rem',
+        fontWeight: '700',
+      }}>
   
-        <h1>Start Your Quiz</h1>
+        <Typography variant="h1" sx={{m:2, p:3}}>Start Your Quiz</Typography>
         <FormControl fullWidth  sx={{ paddingBottom:2 }}>
 <Typography variant="h6" align='left'> Number of Questions</Typography>
 <TextField    required    id="outlined-required"   defaultValue={start.number} name='number' onChange={(e)=>HandelStart(e)}  style={{marginBottom:50}}/>
 
 
-<Typography variant="h6" align='left'> Category</Typography>
+<Typography variant="h6" align='left' > Category</Typography>
      
         <InputLabel id="demo-simple-select-label" ></InputLabel>
         <Select
@@ -125,7 +139,7 @@ const showResult=()=>{
 
 
      
-     </Conatiner>  : null}
+     </Box>  : null}
      {loading && <h1>Loading...</h1>}
      {!loading && !gameOver ?
      <QuestionCard showResult={showResult} seeResult={seeResult}/>: null

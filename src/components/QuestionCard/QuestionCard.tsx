@@ -10,6 +10,9 @@ import { getUserAnswers } from '../../features/UserAnswersSlice';
 import Result from '../Result/Result';
 import {scoreState} from '../../features/ScoreSlice'
 
+import { red ,pink,blue} from '@mui/material/colors';
+
+
 function QuestionCard({showResult, seeResult}:any) {
     const dispatch=useAppDispatch()
     const [index, setIndex] =useState<number>(0)
@@ -50,9 +53,32 @@ function QuestionCard({showResult, seeResult}:any) {
   setUserClicked(false)
    }, [index])
 
+const getColor=(c:string)=>{
+  if(c === 'easy'){
+return blue[800]
+  }else if(c === 'hard'){
+    return red[800]
+  }
+  else if(c === 'meduim'){
+    return pink[500]
+  }
+}
 
   return (
-    <Conatiner>
+    <Box sx={{
+      textAlign:'center',
+      m: 1,
+      p: 4,
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+      color: (theme) =>
+        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+      border: '1px solid',
+      borderColor: (theme) =>
+        theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+      borderRadius: 2,
+      fontSize: '0.875rem',
+      fontWeight: '700',
+    }}>
      <Box
         sx={{
           display: 'flex',
@@ -71,7 +97,7 @@ function QuestionCard({showResult, seeResult}:any) {
         }}
       >
         <Typography variant='h6'>Category {' '}:<span >{' '}{category}</span></Typography>
-        <Typography variant='h6' >Difficulty {' '}:<span >{' '}{start.difficulty}</span></Typography>
+        <Typography variant='h6' sx={{ color: getColor(start.difficulty)}}>Difficulty {' '}:<span >{' '}{start.difficulty}</span></Typography>
         
       </Box>
    
@@ -123,11 +149,27 @@ function QuestionCard({showResult, seeResult}:any) {
         {index<questions.questions.length ? 
         <Button variant="contained" disabled={userCliked ? false : true} sx={{m:3, fontSize:18, width:200}} onClick={goToNext} >Next Question</Button>
         :  
-        <Button variant="contained" color="success" sx={{m:3, fontSize:18, width:200}} onClick={showResult}>See Result</Button>
+        <Button variant="contained"
+        sx={{
+          textAlign:'center',
+          m: 1,
+          p: 4,
+          width:200 ,
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
+          color: (theme) =>
+            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+          border: '1px solid',
+          borderColor: (theme) =>
+            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+          borderRadius: 2,
+          fontSize: '0.875rem',
+          fontWeight: '700',
+        }}
+         color="success"  onClick={showResult}>See Result</Button>
 }   </Box>: null}
 
         {seeResult ? <Result /> :null}
-    </Conatiner>
+    </Box>
   )
 }
 

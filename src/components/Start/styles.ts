@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { withTheme } from "@material-ui/core/styles"
 
 
 export const Conatiner=styled.div`
-background-color:white ;
+background-color:wheat;
 width:800px ;
 height:800px ;
 margin:0 auto ;
