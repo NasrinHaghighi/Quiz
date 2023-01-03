@@ -1,11 +1,15 @@
-import { Box } from '@mui/material'
-import React from 'react'
-
-
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import React from 'react';
+import {  useAppDispatch, useAppSelector } from '../../app/hooks'
 
 function Login() {
-    const mode = localStorage.getItem("mode")
-
+const mode=localStorage.getItem('mode')
+  //console.log(mode)
   return (
     <Box sx={{
         textAlign:'center',
@@ -18,7 +22,9 @@ function Login() {
         borderRadius: 2,
         fontSize: '0.875rem',
         fontWeight: '700',
-      }}>Login........</Box>
+      }}>
+      kkkk
+      </Box>
   )
 }
 

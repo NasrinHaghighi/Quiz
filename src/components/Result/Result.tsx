@@ -9,7 +9,9 @@ import ResultItem from './ResultItem/ResultItem';
 const accent = green[900]
 
 function Result() {
-  const mode = localStorage.getItem("mode")
+  //const mode = localStorage.getItem("mode")
+  const modeState=useAppSelector(state=>state.mode.mode)
+  let mode=modeState? 'dark': 'light'
     const result = useAppSelector(state=> state.userAnswers)
 
 
@@ -22,7 +24,7 @@ function Result() {
       p: 4,
       bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
       color: (mode === 'dark' ? '#fff' : '#000'),
-    borderColor: (mode === 'dark' ? '#fff' : 'red'),
+       borderColor: (mode === 'dark' ? '#fff' : '#123'),
       borderRadius: 2,
       fontSize: '0.875rem',
       fontWeight: '700',

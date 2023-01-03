@@ -1,17 +1,25 @@
 import { Box ,Link} from '@mui/material';
 import React from 'react'
 import Switch from "react-switch";
+import { useAppDispatch, useAppSelector  } from "../../app/hooks";
+import {changeMode} from '../../features/ModeSlice'
 
 
 
 
+function Header() {
 
-interface Check{
-    checked:boolean,
-    handelToggle:any
-  }
-function Header({checked, handelToggle}:Check) {
-    const mode = localStorage.getItem("mode")
+  const dispatch=useAppDispatch()
+
+  const modeState=useAppSelector(state=>state.mode.mode)
+
+  const mode =localStorage.getItem('mode')
+
+  const handelToggle = ()=>{
+  dispatch(changeMode())
+    
+   }
+    //const mode = localStorage.getItem("mode")
   return (
       <Box 
       sx={{
@@ -29,7 +37,7 @@ function Header({checked, handelToggle}:Check) {
       }}
       >
 
-     <Switch onChange={handelToggle} checked={checked} />
+     <Switch onChange={handelToggle} checked={modeState} />
      <Box  sx={{
         display:'flex' ,
         justifyContent:'space-between',

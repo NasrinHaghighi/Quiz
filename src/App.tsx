@@ -1,4 +1,4 @@
-import React ,{useState, useEffect}from "react";
+
 //import { useSelector , useDispatch} from "react-redux";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,38 +11,17 @@ import Login from "./components/Login/Login";
 
 
 
-
 function  App () {
-  const [checked, setChecked] =useState(false)
+ // const [checked, setChecked] =useState(false)
+
   
-const handelToggle = ()=>{
-setChecked(!checked)
-if(checked){
-  localStorage.setItem("mode",   'dark'  )
-}else{
-  localStorage.clear();
-}
 
-  }
-  useEffect(() => {
-   
-  //setMode((pre)=>(pre === 'light' ? 'dark' :'light'))
-  }, [checked])
 
-  // const theme = React.useMemo(
-  //   () =>
-  //     createTheme({
-  //       palette: {
-  //         mode,
-  //       },
-  //     }),
-  //   [mode],
-  // );
 return (
    
     <div className="App">
       <BrowserRouter>
-       <Header handelToggle={handelToggle} checked={checked}/>
+       <Header />
         <Routes>
         <Route path="/"  element={ <Start />}> </Route>
         <Route path="/login"  element={ <Login/>}> </Route>

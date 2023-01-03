@@ -18,6 +18,7 @@ export const ScoreSlice= createSlice({
     reducers:{
         scoreState:(state)=>{
           state.score +=1
+          
         },
  
     }

@@ -11,7 +11,7 @@ import QuestionCard from '../QuestionCard/QuestionCard';
 
 
 import {startSetupHandle} from '../../features/StartSlice'
-import {  useAppDispatch } from '../../app/hooks'
+import {  useAppDispatch, useAppSelector } from '../../app/hooks'
 import { fetchData } from '../../API';
 import { getQuestions } from '../../features/QuestionsSlice';
 import { QuestionState } from "../../API";
@@ -38,7 +38,8 @@ function Start() {
 const dispatch=useAppDispatch()
 const [start, setStart] =useState<Props>({number:5, category:26, difficulty:'easy'})
 
-
+// const modeState=useAppSelector(state=>state.mode.mode)
+// let mode=modeState? 'dark': 'light'
 
 
   const HandelStart=(e:any)=>{

@@ -14,7 +14,9 @@ import { red ,pink,blue} from '@mui/material/colors';
 
 
 function QuestionCard({showResult, seeResult}:any) {
-  const mode = localStorage.getItem("mode")
+  //const mode = localStorage.getItem("mode")
+  const modeState=useAppSelector(state=>state.mode.mode)
+  let mode=modeState? 'dark': 'light'
     const dispatch=useAppDispatch()
     const [index, setIndex] =useState<number>(0)
    
