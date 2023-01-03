@@ -1,5 +1,4 @@
 import React ,{useState,useEffect}from 'react'
-import {Conatiner} from './styles'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -17,7 +16,7 @@ import { fetchData } from '../../API';
 import { getQuestions } from '../../features/QuestionsSlice';
 import { QuestionState } from "../../API";
 import { Box } from '@mui/material';
-import Switch from "react-switch";
+
 
 interface Props{
   number:number,
@@ -27,12 +26,9 @@ difficulty:string
 interface Start_type{
   start:Props
 }
-interface Check{
-  checked:boolean,
-  handelToggle:any
-}
-function Start({checked, handelToggle}:Check) {
 
+function Start() {
+  const mode = localStorage.getItem("mode")
   const [loading, setLoading] =useState(false)
   const [questions, setQuestions] =useState<QuestionState[]>([])
   const [gameOver, setgameOver]=useState(true)
@@ -84,30 +80,34 @@ const showResult=()=>{
         textAlign:'center',
         m: 1,
         p: 4,
-        bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-        color: (theme) =>
-          theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+        bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
+        color: (mode === 'dark' ? '#fff' : '#000'),
         border: '1px solid',
-        borderColor: (theme) =>
-          theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+        borderColor: (mode === 'dark' ? 'red' : 'red'),
         borderRadius: 2,
         fontSize: '0.875rem',
         fontWeight: '700',
       }}>
    <Box sx={{textAlign:'left',  m: 1,   p: 2,}}>
     
-   <Switch onChange={handelToggle} checked={checked} />
+   
    </Box>
         <Typography variant="h1" sx={{m:2, p:3}}>Start Your Quiz</Typography>
         <FormControl fullWidth  sx={{ paddingBottom:2 }}>
 <Typography variant="h6" align='left'> Number of Questions</Typography>
-<TextField    required    id="outlined-required"   defaultValue={start.number} name='number' onChange={(e)=>HandelStart(e)}  style={{marginBottom:50}}/>
+<TextField    required    id="outlined-required"   defaultValue={start.number} name='number' onChange={(e)=>HandelStart(e)}  style={{marginBottom:50}} sx={{ border: '1px solid',
+          bgcolor: '#fff',
+          color: (mode === 'dark' ? '#fff' : '#000'),
+        borderColor: (mode === 'dark' ? '#fff' : 'Gray'),}}/>
 
 
 <Typography variant="h6" align='left' > Category</Typography>
      
         <InputLabel id="demo-simple-select-label" ></InputLabel>
-        <Select
+        <Select sx={{ border: '1px solid',
+           bgcolor: '#fff',
+          color: ( '#000'),
+        borderColor: (mode === 'dark' ? '#fff' : 'Gray'),}}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           style={{marginBottom:50}}
@@ -126,7 +126,10 @@ const showResult=()=>{
 
         <Typography variant="h6" align='left'> Select Difficulty</Typography>
         <InputLabel id="demo-simple-select-label"></InputLabel>
-        <Select
+        <Select sx={{ border: '1px solid',
+           bgcolor: '#fff',
+          color: ( '#000'),
+        borderColor: (mode === 'dark' ? '#fff' : 'Gray'),}}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           style={{marginBottom:50}}

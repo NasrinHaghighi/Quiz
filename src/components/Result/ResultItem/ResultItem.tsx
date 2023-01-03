@@ -1,11 +1,11 @@
 import React from 'react'
 import { QuestionState } from "../../../API";
-import { Box, Typography ,Button} from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import { red ,green} from '@mui/material/colors';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks'
+
 
 interface R{
     r:QuestionState
@@ -20,12 +20,11 @@ function ResultItem({r}:R) {
       textAlign:'center',
       m:3,
       p: 2,
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-      color: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+      bgcolor: ( '#fff'),
+      color: ('#000'),
       borderBottom: '1px solid',
-      borderColor: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+   borderRadius:2,
+      borderColor: ('gray') 
   
      
     }}

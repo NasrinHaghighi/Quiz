@@ -14,9 +14,10 @@ import { red ,pink,blue} from '@mui/material/colors';
 
 
 function QuestionCard({showResult, seeResult}:any) {
+  const mode = localStorage.getItem("mode")
     const dispatch=useAppDispatch()
     const [index, setIndex] =useState<number>(0)
-    const [score, setScore] =useState<number>(0)
+   
      const [userAnswer, setUserAnswer] =useState<string>()
      const start= useAppSelector(state=>state.start)
      const questions= useAppSelector(state=>state.questions)
@@ -71,12 +72,9 @@ return blue[800]
       textAlign:'center',
       m: 1,
       p: 4,
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-      color: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-      border: '1px solid',
-      borderColor: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+      bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
+      color: (mode === 'dark' ? '#fff' : '#000'),
+    borderColor: (mode === 'dark' ? '#fff' : 'red'),
       borderRadius: 2,
       fontSize: '0.875rem',
       fontWeight: '700',
@@ -87,18 +85,15 @@ return blue[800]
           justifyContent:'space-between',
           m: 1,
           p: 2,
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          border: '1px solid',
-          borderColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+          bgcolor: '#fff',
+          color:  '#000',
+        borderColor: (mode === 'dark' ? '#fff' : 'Gray'),
           borderRadius: 2,
           fontSize: '0.875rem',
           fontWeight: '700',
         }}
       >
-        <Typography variant='h6'>Category {' '}:<span >{' '}{category}</span></Typography>
+        <Typography variant='h6' >Category {' '}:<span >{' '}{category}</span></Typography>
         <Typography variant='h6' sx={{ color: getColor(start.difficulty)}}>Difficulty {' '}:<span >{' '}{start.difficulty}</span></Typography>
         
       </Box>
@@ -108,12 +103,10 @@ return blue[800]
           justifyContent:'center',
           m: 1,
           p: 2,
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
+          bgcolor:  '#fff',
+          color: 'red',
           border: '1px solid',
-          borderColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+          borderColor: (mode === 'dark' ? '#fff' : 'Gray'),
           borderRadius: 2,
          
         }}>
@@ -132,7 +125,13 @@ return blue[800]
         </Box>
         {/* question and answer box */}
         {index<questions.questions.length ? 
-        <Box>
+        <Box sx={{
+          
+          bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
+          color: (mode === 'dark' ? '#fff' : '#000'),
+         borderRadius: 2,
+         
+        }}>
    
         <Typography variant='h4'sx={{ m: 4 }}>{questions.questions.length>1 ? questions.questions[index].question : null}</Typography>
 
@@ -149,7 +148,7 @@ return blue[800]
         {!seeResult ? 
         <Box sx={{ textAlign:'right' }}>
         {index<questions.questions.length ? 
-        <Button variant="contained" disabled={userCliked ? false : true} sx={{m:3, fontSize:18, width:200}} onClick={goToNext} >Next Question</Button>
+        <Button variant="contained" disabled={userCliked ? false : true} sx={{m:3, fontSize:18, width:200, backgroundColor: mode === 'dark' ? 'red' : 'green' }} onClick={goToNext}  >Next Question</Button>
         :  
         <Button variant="contained"
         sx={{
@@ -157,12 +156,6 @@ return blue[800]
           m: 1,
           p: 4,
           width:200 ,
-          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-          color: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-          border: '1px solid',
-          borderColor: (theme) =>
-            theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
           borderRadius: 2,
           fontSize: '0.875rem',
           fontWeight: '700',

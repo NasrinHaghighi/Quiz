@@ -1,7 +1,7 @@
-import React,{useState, useEffect} from 'react'
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { Box, Typography ,Button} from '@mui/material';
-import { purple, red,green } from '@mui/material/colors';
+import React from 'react'
+import { useAppSelector } from '../../app/hooks'
+import { Box, Typography } from '@mui/material';
+import { green } from '@mui/material/colors';
 
 import ResultItem from './ResultItem/ResultItem';
 
@@ -9,7 +9,7 @@ import ResultItem from './ResultItem/ResultItem';
 const accent = green[900]
 
 function Result() {
-    
+  const mode = localStorage.getItem("mode")
     const result = useAppSelector(state=> state.userAnswers)
 
 
@@ -17,15 +17,12 @@ function Result() {
   return (
     <Box
     sx={{
-    
+      textAlign:'center',
       m: 1,
-      p: 2,
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
-      color: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.300' : 'grey.800',
-      border: '1px solid',
-      borderColor: (theme) =>
-        theme.palette.mode === 'dark' ? 'grey.800' : 'grey.300',
+      p: 4,
+      bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
+      color: (mode === 'dark' ? '#fff' : '#000'),
+    borderColor: (mode === 'dark' ? '#fff' : 'red'),
       borderRadius: 2,
       fontSize: '0.875rem',
       fontWeight: '700',
