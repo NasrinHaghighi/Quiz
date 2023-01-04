@@ -10,8 +10,6 @@ opacity:0.5 ;
 &.active{
     opacity:1;
 }
-
-
 `
 
 export const Container =styled.div`
@@ -22,8 +20,6 @@ padding:30px ;
 &.dark{
     background-color:#255 ;
 }
-
-
 `
 export const Steps=styled.div`
 font-size:24px ;

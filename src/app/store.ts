@@ -5,6 +5,7 @@ import ScoreSlice from '../features/ScoreSlice'
 import UseAnswers from '../features/UserAnswersSlice'
 import StartAgainSlice from '../features/StartAgainSlice'
 import ModeSlice from '../features/ModeSlice'
+import LoginSlice from '../features/LoginSlice'
 
 export const store=configureStore({
     reducer:{
@@ -13,7 +14,8 @@ export const store=configureStore({
  score:ScoreSlice,
      userAnswers:UseAnswers,
      startAgain:StartAgainSlice,
-     mode:ModeSlice
+     mode:ModeSlice,
+     login:LoginSlice
      
 
     }
