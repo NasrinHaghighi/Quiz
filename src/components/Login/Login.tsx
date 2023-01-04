@@ -1,29 +1,36 @@
+import React, {useState,useEffect} from 'react';
 import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import React from 'react';
+import {Number} from './styles'
 import {  useAppDispatch, useAppSelector } from '../../app/hooks'
-
 function Login() {
-const mode=localStorage.getItem('mode')
-  //console.log(mode)
+  //const mode = localStorage.getItem("mode")
+   const modeState=useAppSelector(state=>state.mode.mode)
+   let mode = modeState? 'dark': 'light'
+   const start=useAppSelector(state=>state.start)
+   console.log(start)
+
+useEffect(() => {
+  console.log(mode)
+}, [])
+
+
+const [active, setActive] = useState(1)
+  console.log(mode)
   return (
     <Box sx={{
         textAlign:'center',
         m: 1,
         p: 4,
         bgcolor: (mode === 'dark' ? '#101010' : '#fff'),
-        color: (mode === 'dark' ? 'grey.300' : 'grey.800'),
+        color: (mode === 'dark' ? '#fff' : '#000'),
         border: '1px solid',
-        borderColor: (mode=== 'dark' ? 'grey.800' : 'grey.300'),
+        borderColor: (mode === 'dark' ? 'red' : 'yellow'),
         borderRadius: 2,
         fontSize: '0.875rem',
         fontWeight: '700',
       }}>
-      kkkk
+     222
+
       </Box>
   )
 }

@@ -28,7 +28,7 @@ interface Start_type{
 }
 
 function Start() {
-  const mode = localStorage.getItem("mode")
+  //const mode = localStorage.getItem("mode")
   const [loading, setLoading] =useState(false)
   const [questions, setQuestions] =useState<QuestionState[]>([])
   const [gameOver, setgameOver]=useState(true)
@@ -38,9 +38,9 @@ function Start() {
 const dispatch=useAppDispatch()
 const [start, setStart] =useState<Props>({number:5, category:26, difficulty:'easy'})
 
-// const modeState=useAppSelector(state=>state.mode.mode)
-// let mode=modeState? 'dark': 'light'
-
+  const modeState=useAppSelector(state=>state.mode.mode)
+  let mode=modeState? 'dark': 'light'
+  //console.log(mode)
 
   const HandelStart=(e:any)=>{
     const value = e.target.value;

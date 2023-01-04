@@ -1,4 +1,5 @@
-import { Box ,Link} from '@mui/material';
+import { Box } from '@mui/material';
+import { Link } from "react-router-dom";
 import React from 'react'
 import Switch from "react-switch";
 import { useAppDispatch, useAppSelector  } from "../../app/hooks";
@@ -12,8 +13,8 @@ function Header() {
   const dispatch=useAppDispatch()
 
   const modeState=useAppSelector(state=>state.mode.mode)
-
-  const mode =localStorage.getItem('mode')
+  let mode=modeState? 'dark': 'light'
+  //const mode =localStorage.getItem('mode')
 
   const handelToggle = ()=>{
   dispatch(changeMode())
@@ -45,8 +46,8 @@ function Header() {
       width:150,
           
       }}>
-     <Link href='/login'>Login</Link> 
-     <Link href='/'>Back</Link> </Box>
+     <Link to='/login'>Login</Link> 
+     <Link to='/'>Back</Link> </Box>
      </Box>
 
   )

@@ -24,7 +24,7 @@ return (
        <Header />
         <Routes>
         <Route path="/"  element={ <Start />}> </Route>
-        <Route path="/login"  element={ <Login/>}> </Route>
+        <Route path="/login"  element={ <Login />}> </Route>
       </Routes>
       </BrowserRouter>
      
